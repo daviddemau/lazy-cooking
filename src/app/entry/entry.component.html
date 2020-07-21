@@ -1,0 +1,8 @@
+<h1>Welcome to Lazy Cooking</h1>
+<p>You may start creating your custom shopping list by clicking on 'Shopping list'.</p>
+<p *ngIf="!connectedUser">Please <a routerLink="authentication">log in</a> to access all features, such as fetching your previously saved recipes and manage your recipes list.</p>
+<p *ngIf="connectedUser">Welcome back <strong>{{ connectedUser.email }}</strong>, please enjoy creating amazing recipes with Lazy Cooking.</p>
+
+<hr>
+<img src="assets/app-logo.png">
+

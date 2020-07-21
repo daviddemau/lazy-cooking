@@ -1,0 +1,18 @@
+li {
+  cursor: pointer;
+}
+
+.manage {
+  margin-top: 8px;
+}
+
+.authentication {
+  margin-right: 15px;
+}
+
+.navbar-brand {
+  width: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/app-logo.png");
+}

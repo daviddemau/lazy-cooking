@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <a class="navbar-brand" routerLink=""></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+        <li routerLink="recipes" *ngIf="connectedUser">
+          <a>My recipes</a>
+        </li>
+        <li routerLink="shopping">
+          <a>Shopping list</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li routerLink="shopping" class="authentication" *ngIf="connectedUser" (click)="logout()">
+          <a>Logout</a>
+        </li>
+        <li class="dropdown manage" *ngIf="connectedUser">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="true">
+            Manage recipes
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a style="cursor: pointer;" (click)="saveData()">Save Data</a></li>
+            <li><a style="cursor: pointer;" (click)="fetchData()">Fetch Data</a></li>
+          </ul>
+        </li>
+        <li routerLink="authentication" class="authentication" *ngIf="!connectedUser">
+          <a>Authenticate</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="editForm" (ngSubmit)="selectedIg ? update() : add()">
+      <div class="row">
+        <div class="col-sm-5">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            name="name"
+            formControlName="name"
+            autocomplete="off"
+          >
+          <div class="text-danger"
+               *ngIf="editForm.get('name').invalid
+                 && (editForm.get('name').dirty || editForm.get('name').touched)">
+            name cannot be empty
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <label for="amount">Amount</label>
+          <input
+            type="number"
+            min="0"
+            id="amount"
+            class="form-control"
+            name="amount"
+            pattern="^[1-9]+[0-9]*$"
+            formControlName="amount"
+            autocomplete="off"
+          >
+          <div class="text-danger"
+               *ngIf="editForm.get('amount').invalid
+                 && (editForm.get('amount').dirty || editForm.get('amount').touched)">
+            amount cannot be empty
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-success" type="submit"
+          >{{selectedIg ? 'update' : 'add'}}</button>
+          <button
+            class="btn btn-danger deleteButton"
+            type="button"
+            (click)="delete()"
+          >Delete</button>
+          <button class="btn btn-primary clearButton" type="button" (click)="clearForm()">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

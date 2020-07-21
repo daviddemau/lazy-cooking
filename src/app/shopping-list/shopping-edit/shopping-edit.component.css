@@ -1,0 +1,8 @@
+button {
+  margin-top: 20px;
+}
+
+
+.deleteButton, .clearButton {
+  margin-left: 10px;
+}

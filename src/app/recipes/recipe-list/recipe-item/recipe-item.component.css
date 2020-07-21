@@ -1,0 +1,4 @@
+.recipeImage, .list-group-item {
+  border: 1px black;
+  border-radius: 10px;
+}

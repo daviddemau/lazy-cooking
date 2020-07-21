@@ -1,0 +1,120 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form #form="ngForm" [formGroup]="editForm" (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success">Save
+          </button>
+          <button type="button" class="btn btn-danger cancelButton" (click)="cancelEdit()">Cancel</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              autocomplete="off"
+              formControlName="name"
+              class="form-control">
+            <div class="text-danger"
+                 *ngIf="editForm.get('name').invalid
+                 && (form.submitted || editForm.get('name').dirty || editForm.get('name').touched)">
+              name cannot be empty
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">Image URL</label>
+            <input
+              type="text"
+              id="imagePath"
+              autocomplete="off"
+              formControlName="imagePath"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="editForm.get('imagePath').value" class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              type="text"
+              id="description"
+              class="form-control"
+              formControlName="description"
+              rows="6"></textarea>
+            <div class="text-danger"
+                 *ngIf="editForm.get('description').invalid
+                 && (form.submitted || editForm.get('name').dirty || editForm.get('name').touched)">
+              description cannot be empty
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formArrayName="ingredients">
+        <div class="col-xs-12">
+          <div
+            class="row"
+            *ngFor="let ingredient of ingredientsArray.controls; let i = index"
+            [formGroupName]="i"
+            style="margin-top: 10px;">
+            <div class="col-xs-8">
+              <input
+                type="text"
+                formControlName="name"
+                class="form-control"
+              >
+              <div class="text-danger"
+                   *ngIf="ingredientsArray.controls[i].invalid
+                   && (form.submitted || ingredientsArray.controls[i].dirty
+                   || ingredientsArray.controls[i].touched)">
+                ingredient name or amount cannot be empty
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <input
+                type="number"
+                min="0"
+                formControlName="amount"
+                class="form-control"
+              >
+            </div>
+            <div class="col-xs-2">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="removeIngredient(i)"
+              >X
+              </button>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="addIngredient()"
+              >Add Ingredient
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,9 @@
+.description {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.img-responsive {
+  border: 1px black;
+  border-radius: 10px;
+}
